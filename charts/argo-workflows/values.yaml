@@ -172,10 +172,15 @@ controller:
   podLabels: {}
   # -- SecurityContext to set on the controller pods
   podSecurityContext: {}
+  # -- [DNS configuration](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) for controller pods
+  dnsConfig: {}
+  # -- Alternative DNS policy for controller pods
+  dnsPolicy: ""
   # podPortName: http
   metricsConfig:
     # -- Enables prometheus metrics server
-    enabled: false
+    # @default -- `true`  (Argo Workflows default)
+    enabled:
     # -- Path is the path where metrics are emitted. Must start with a "/".
     path: /metrics
     # -- Frequency at which prometheus scrapes metrics
@@ -613,6 +618,10 @@ server:
   podLabels: {}
   # -- SecurityContext to set on the server pods
   podSecurityContext: {}
+  # -- [DNS configuration](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) for server pods
+  dnsConfig: {}
+  # -- Alternative DNS policy for server pods
+  dnsPolicy: ""
   rbac:
     # -- Adds Role and RoleBinding for the server.
     create: true
